@@ -1,5 +1,6 @@
 package br.com.alura.ForumHub.models.author;
 
+import br.com.alura.ForumHub.dto.author.AuthorDTO;
 import br.com.alura.ForumHub.models.answerTopic.AnswerTopic;
 import br.com.alura.ForumHub.models.topic.Topic;
 import jakarta.persistence.*;
@@ -13,8 +14,8 @@ import java.util.List;
 @Table(name = "autores")
 @Entity(name = "Autor")
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Author {
 
@@ -31,6 +32,13 @@ public class Author {
 
     @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY)
     private List<AnswerTopic> respostas;
+
+    public Author(){}
+
+    public Author(AuthorDTO autor) {
+        this.nome = autor.nome();
+        this.email = autor.email();
+    }
 
     public String getNome() {
         return nome;

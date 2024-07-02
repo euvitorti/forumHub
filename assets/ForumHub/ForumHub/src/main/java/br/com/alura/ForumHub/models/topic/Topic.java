@@ -1,5 +1,6 @@
 package br.com.alura.ForumHub.models.topic;
 
+import br.com.alura.ForumHub.dto.topic.TopicDTO;
 import br.com.alura.ForumHub.models.answerTopic.AnswerTopic;
 import br.com.alura.ForumHub.models.author.Author;
 import br.com.alura.ForumHub.models.course.Course;
@@ -15,8 +16,8 @@ import java.util.List;
 @Table(name = "topicos")
 @Entity(name = "Topico")
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Topic {
     @Id
@@ -38,4 +39,12 @@ public class Topic {
 
     @OneToMany(mappedBy = "topico", fetch = FetchType.LAZY)
     private List<AnswerTopic> respostas;
+
+    public Topic(){}
+
+    public Topic(TopicDTO topicDTO) {
+        this.titulo = topicDTO.titulo();
+        this.mensagem = topicDTO.mensagem();
+        Author author = new Author(topicDTO.autor());;
+    }
 }
