@@ -2,12 +2,9 @@ package br.com.alura.ForumHub.models.author;
 
 import br.com.alura.ForumHub.dto.author.AuthorDTO;
 import br.com.alura.ForumHub.models.answerTopic.AnswerTopic;
-import br.com.alura.ForumHub.models.topic.Topic;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -27,8 +24,8 @@ public class Author {
 
     private String email;
 
-    @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY)
-    private List<Topic> topicos;
+//    @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY)
+//    private List<Topic> topicos;
 
     @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY)
     private List<AnswerTopic> respostas;
@@ -48,9 +45,9 @@ public class Author {
         return email;
     }
 
-    public List<Topic> getTopicos() {
-        return topicos;
-    }
+//    public List<Topic> getTopicos() {
+//        return topicos;
+//    }
 
     public List<AnswerTopic> getRespostas() {
         return respostas;

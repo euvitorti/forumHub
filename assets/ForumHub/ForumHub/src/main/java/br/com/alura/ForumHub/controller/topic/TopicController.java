@@ -8,10 +8,9 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/topicos")
@@ -23,10 +22,16 @@ public class TopicController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity register(@RequestBody @Valid TopicDTO topicDTO){
+    public ResponseEntity register(@RequestBody @Valid TopicDTO topicDTO) {
         var topic = new Topic(topicDTO);
         iTopicRepository.save(topic);
 
         return ResponseEntity.ok(topic);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Topic>> findAll() {
+        List<Topic> topicList = iTopicRepository.findAll();
+        return ResponseEntity.ok(topicList);
     }
 }

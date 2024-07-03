@@ -5,10 +5,8 @@ import br.com.alura.ForumHub.models.answerTopic.AnswerTopic;
 import br.com.alura.ForumHub.models.author.Author;
 import br.com.alura.ForumHub.models.course.Course;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,10 +14,9 @@ import java.util.List;
 @Table(name = "topicos")
 @Entity(name = "Topico")
 @Getter
-//@NoArgsConstructor
-//@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Topic {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,6 +42,31 @@ public class Topic {
     public Topic(TopicDTO topicDTO) {
         this.titulo = topicDTO.titulo();
         this.mensagem = topicDTO.mensagem();
-        Author author = new Author(topicDTO.autor());;
+        Author autor = new Author(topicDTO.autor());;
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Author getAutor() {
+        return autor;
+    }
+
+    public Course getCurso() {
+        return curso;
+    }
+
 }
