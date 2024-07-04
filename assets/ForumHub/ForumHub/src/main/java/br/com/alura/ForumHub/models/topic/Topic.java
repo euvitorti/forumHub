@@ -1,6 +1,7 @@
 package br.com.alura.ForumHub.models.topic;
 
 import br.com.alura.ForumHub.dto.topic.TopicDTO;
+import br.com.alura.ForumHub.dto.topic.UpdateTopicDTO;
 import br.com.alura.ForumHub.models.answerTopic.AnswerTopic;
 import br.com.alura.ForumHub.models.author.Author;
 import br.com.alura.ForumHub.models.course.Course;
@@ -37,12 +38,15 @@ public class Topic {
     @OneToMany(mappedBy = "topico", fetch = FetchType.LAZY)
     private List<AnswerTopic> respostas;
 
+    private Boolean ativo;
+
     public Topic(){}
 
     public Topic(TopicDTO topicDTO) {
         this.titulo = topicDTO.titulo();
         this.mensagem = topicDTO.mensagem();
-        Author autor = new Author(topicDTO.autor());;
+        Author autor = new Author(topicDTO.autor());
+        this.ativo = true;
     }
 
     public String getTitulo() {
@@ -69,4 +73,18 @@ public class Topic {
         return curso;
     }
 
+    public void updateTopic(UpdateTopicDTO updateTopicDTO) {
+        
+        if(updateTopicDTO.mensagem() != null) {
+            this.mensagem = updateTopicDTO.mensagem();
+        }
+
+        if(updateTopicDTO.titulo() != null) {
+            this.titulo = updateTopicDTO.titulo();
+        }
+    }
+
+    public void logicalExclusion() {
+        this.ativo = false;
+    }
 }
