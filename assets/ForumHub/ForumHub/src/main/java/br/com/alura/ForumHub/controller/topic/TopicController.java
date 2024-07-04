@@ -49,14 +49,14 @@ public class TopicController {
         return ResponseEntity.ok(topic);
     }
 
-//    @DeleteMapping("/{id}")
-//    @Transactional
-//    public ResponseEntity deleteTopic(@PathVariable Long id) {
-//        var topic = iTopicRepository.getReferenceById(id);
-//
-//        topic.logicalExclusion();
-//
-//        // 204 NO CONTENT
-//        return ResponseEntity.noContent().build();
-//    }
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity deleteTopic(@PathVariable Long id) {
+        var topic = iTopicRepository.getReferenceById(id);
+
+        topic.logicalExclusion();
+
+        // 204 NO CONTENT
+        return ResponseEntity.noContent().build();
+    }
 }
