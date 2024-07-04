@@ -35,7 +35,6 @@ public class Security implements WebMvcConfigurer {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 // A REQUISIÇÃO É LIBERADA
                 .authorizeHttpRequests(req -> {
-                    req.requestMatchers("/login.html").permitAll();
                     req.requestMatchers("/login").permitAll();
                     req.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "swagger-ui/**").permitAll();
                     // QUALQUER OUTRA REQUISIÇÃO ESTÁ BLOQUEADA

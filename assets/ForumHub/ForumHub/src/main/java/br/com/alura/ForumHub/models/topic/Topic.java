@@ -49,32 +49,8 @@ public class Topic {
         this.ativo = true;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public Author getAutor() {
-        return autor;
-    }
-
-    public Course getCurso() {
-        return curso;
-    }
-
     public void updateTopic(UpdateTopicDTO updateTopicDTO) {
-        
+
         if(updateTopicDTO.mensagem() != null) {
             this.mensagem = updateTopicDTO.mensagem();
         }

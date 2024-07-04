@@ -11,8 +11,6 @@ import java.util.List;
 @Table(name = "autores")
 @Entity(name = "Autor")
 @Getter
-//@NoArgsConstructor
-//@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Author {
 
@@ -24,9 +22,6 @@ public class Author {
 
     private String email;
 
-//    @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY)
-//    private List<Topic> topicos;
-
     @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY)
     private List<AnswerTopic> respostas;
 
@@ -35,18 +30,6 @@ public class Author {
     public Author(AuthorDTO autor) {
         this.nome = autor.nome();
         this.email = autor.email();
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public List<AnswerTopic> getRespostas() {
-        return respostas;
     }
 
 }
